@@ -61,9 +61,10 @@ methods:{
         if(confirm=="Y" || confirm=="y"){
             this.trashedTasks =[];
 
-        }
-        if(confirm=="N" || confirm=="n"){
+        }else if(confirm=="N" || confirm=="n"){
             alert("il cestino non è stato svuotato")
+        }else{
+            alert("input errato")
         }
     }
 
