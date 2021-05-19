@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue-Todo</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -26,11 +28,11 @@
         <main id="site_main">
             <!-- lista di tasks -->
             <div class="tasks" v-if="tasks.length > 0">
-
+                <h2>To Do List</h2>
                 <div class="task"v-for="(task, index) in tasks"> 
-                    <input type="text" v-model="tasks[index]">
+                    <input type="text" v-model="tasks[index]" @keyup.enter="modifiedTask(tasks[index])">
                     <i class="fas fa-check-circle fa-lg fa-fw" @click="checkedTask(tasks[index],index)"></i>
-                    <i class="fas fa-times-circle fa-lg fa-fw" @click="removeTask(index)"></i></div>
+                    <i class="fas fa-trash fa-lg fa-fw" @click="removeTask(tasks[index],index)"></i></div>
             </div>
             <div class="no_class" v-else>
                 Nothing to do
@@ -38,8 +40,18 @@
 
             <!-- lista tasks completate -->
             <div class="complete_tasks" v-if="completeTasks.length > 0">
-                <div class="complete" v-for="complete in completeTasks">
-                    <span>{{complete}}</span>
+                <h2>Completed</h2>
+                <div class="complete" v-for="(complete,index) in completeTasks">
+                    <span>{{complete}}</span><i @click="undoTask(complete,index)" class="fas fa-undo-alt"></i>
+                </div>
+            </div>
+            <div v-else></div>
+
+            <!-- lista tasks cancellate -->
+            <div class="trashed_tasks" v-if="trashedTasks.length > 0">
+                <h2>Trashed</h2><span @click="confirmCanc()">(Empty bin)</span>
+                <div class="trashed" v-for="(trashed,index) in trashedTasks">
+                    <span>{{trashed}}</span><i @click="recoverTask(trashed,index)" class="fas fa-trash-restore fa-lg"></i>
                 </div>
             </div>
             <div v-else></div>

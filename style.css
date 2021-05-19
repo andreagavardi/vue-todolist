@@ -21,11 +21,13 @@ body {
   margin: 2rem;
 }
 input[type="text"],
-.complete {
+.complete,
+.trashed {
   height: 2rem;
   width: 350px;
   text-align: center;
   font-size: 1.25rem;
+  line-height: 2rem;
   border-radius: 5px;
   background-color: #d3d3d3;
 }
@@ -43,14 +45,17 @@ button {
   display: flex;
 }
 .tasks,
-.complete_tasks {
+.complete_tasks,
+.trashed_tasks {
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
   margin: 1rem;
 }
 
-.task {
+.task,
+.complete,
+.trashed {
   position: relative;
 }
 .task > input {
@@ -58,15 +63,17 @@ button {
 
   border-radius: 2px;
 }
-.task > i.fa-times-circle {
+.task > i.fa-trash {
   position: absolute;
-  top: 36%;
+  top: 25%;
   right: 0%;
   cursor: pointer;
 }
-.task > .fa-check-circle {
+.task > .fa-check-circle,
+.fa-undo-alt,
+.fa-trash-restore {
   position: absolute;
-  top: 36%;
+  top: 20%;
   right: 30px;
   cursor: pointer;
 }
@@ -75,4 +82,15 @@ button {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
+}
+
+.trashed_tasks > span {
+  font-size: 1.2rem;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+.trashed_tasks > h2 {
+  display: inline-block;
+  margin-right: 5px;
 }

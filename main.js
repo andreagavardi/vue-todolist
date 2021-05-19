@@ -7,9 +7,12 @@ data:{
     tasks:[
         "Learn Vue",
         "Learn CSS",
-        "Leran JS"
+        "Learn JS"
     ],
     completeTasks:[
+
+    ],
+    trashedTasks:[
 
     ]
 },
@@ -24,16 +27,48 @@ methods:{
     confirmTask(){
         this.addTask()
     },
-    removeTask(index){
-        this.tasks.splice(index,1)
+    removeTask(task,index){
+        this.trashedTasks.push(task);
+        this.tasks.splice(index,1);
     },
+
+    /* Bonus tasks completate */
     checkedTask(task,index){
         this.completeTasks.push(task)
         this.tasks.splice(index,1)
+    },
+
+    /* bonus undo complete tasks */
+    undoTask(complete,index){
+        this.tasks.push(complete)
+        this.completeTasks.splice(index,1);
+
+    },
+    /* Bonus recuperare una task cestinata */
+    recoverTask(trashed,index){
+        this.tasks.push(trashed);
+        this.trashedTasks.splice(index,1);
+    },
+    /*Bonus modifica della task premendo Enter */
+    modifiedTask(task){
+        alert('hai modificato correttamente in -' + task + "-");
+    },
+
+    /* Bonus svuotare il cestino */
+    confirmCanc(){
+        const confirm = prompt("sei sicuro di rimuovere tutti gli elementi dal cestino? Y/N");
         
+        if(confirm=="Y" || confirm=="y"){
+            this.trashedTasks =[];
+
+        }
+        if(confirm=="N" || confirm=="n"){
+            alert("il cestino non è stato svuotato")
+        }
     }
 
 }
 
 
 })
+
