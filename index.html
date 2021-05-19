@@ -10,25 +10,41 @@
 </head>
 <body>
     
-
+    <!-- Vue App -->
     <div id="app">
+
+
         <div class="logo">
             <img width="200px" :src="logo" alt="">
         </div>
+
+        <!-- input e tasto per aggiungere nuove tasks -->
         <div class="add_task">
             <input v-model="newTask"type="text" placeholder="add a task">
             <button @click="addTask">Add Task</button>
         </div>
+        <main id="site_main">
+            <!-- lista di tasks -->
+            <div class="tasks" v-if="tasks.length > 0">
 
-        <div class="tasks" v-if="tasks.length > 0">
+                <div class="task"v-for="(task, index) in tasks"> 
+                    <input type="text" v-model="tasks[index]">
+                    <i class="fas fa-check-circle fa-lg fa-fw" @click="checkedTask(tasks[index],index)"></i>
+                    <i class="fas fa-times-circle fa-lg fa-fw" @click="removeTask(index)"></i></div>
+            </div>
+            <div class="no_class" v-else>
+                Nothing to do
+            </div>
 
-            <div class="task"v-for="(task, index) in tasks" v-model="task"> 
-                <input type="text" v-model="task">
-                 <i class="fas fa-times-circle fa-lg fa-fw" @click="removeTask(index)"></i></div>
-        </div>
-        <div class="no_class" v-else>
-            Nothing to do
-        </div>
+            <!-- lista tasks completate -->
+            <div class="complete_tasks" v-if="completeTasks.length > 0">
+                <div class="complete" v-for="complete in completeTasks">
+                    <span>{{complete}}</span>
+                </div>
+            </div>
+            <div v-else></div>
+        
+        </main>
 
     </div>
     <!-- VUE JS -->

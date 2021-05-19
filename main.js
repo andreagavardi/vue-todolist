@@ -5,9 +5,12 @@ data:{
     logo:"https://www.boolean.careers/images/misc/logo.png",
     newTask:"",
     tasks:[
-        "learn html",
-        "leran CSS",
+        "Learn Vue",
+        "Learn CSS",
         "Leran JS"
+    ],
+    completeTasks:[
+
     ]
 },
 methods:{
@@ -19,9 +22,14 @@ methods:{
         }
     },
     removeTask(index){
-        /* usare splice */
         this.tasks.splice(index,1)
+    },
+    checkedTask(task,index){
+        this.completeTasks.push(task)
+        this.tasks.splice(index,1)
+        
     }
+
 }
 
 
