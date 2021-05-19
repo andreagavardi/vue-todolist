@@ -15,11 +15,14 @@ data:{
 },
 methods:{
     addTask(){
-        if(!this.newTask==""){
+        if(this.newTask.length >=3){
             this.tasks.push(this.newTask);
             this.newTask=""
 
         }
+    },
+    confirmTask(){
+        this.addTask()
     },
     removeTask(index){
         this.tasks.splice(index,1)

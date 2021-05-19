@@ -20,7 +20,7 @@
 
         <!-- input e tasto per aggiungere nuove tasks -->
         <div class="add_task">
-            <input v-model="newTask"type="text" placeholder="add a task">
+            <input v-model="newTask"type="text" placeholder="add a task" @keyup.enter="confirmTask()">
             <button @click="addTask">Add Task</button>
         </div>
         <main id="site_main">
