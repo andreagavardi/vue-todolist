@@ -24,9 +24,7 @@ methods:{
 
         }
     },
-    confirmTask(){
-        this.addTask()
-    },
+    
     removeTask(task,index){
         this.trashedTasks.push(task);
         this.tasks.splice(index,1);

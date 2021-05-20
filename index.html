@@ -25,7 +25,7 @@
 
         <!-- input e tasto per aggiungere nuove tasks -->
         <div class="add_task">
-            <input v-model="newTask"type="text" placeholder="add a task" @keyup.enter="confirmTask()">
+            <input v-model="newTask"type="text" placeholder="add a task" @keyup.enter=" addTask">
             <button @click="addTask">Add Task</button>
         </div>
         <main id="site_main">
@@ -48,7 +48,7 @@
                     <span>{{complete}}</span><i @click="undoTask(complete,index)" class="fas fa-undo-alt"></i>
                 </div>
             </div>
-            <div v-else></div>
+            
 
             <!-- lista tasks cancellate -->
             <div class="trashed_tasks" v-if="trashedTasks.length > 0">
@@ -57,7 +57,7 @@
                     <span>{{trashed}}</span><i @click="recoverTask(trashed,index)" class="fas fa-trash-restore fa-lg"></i>
                 </div>
             </div>
-            <div v-else></div>
+            
         
         </main>
 
